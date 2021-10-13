@@ -11,12 +11,12 @@ services:
       - ./config:/etc/odoo
       - ./addons:/mnt/extra-addons
     environment:
-      - PASSWORD=%{database_password}
+      - PASSWORD=%{dbpass}
   db:
     image: postgres:13
     environment:
       - POSTGRES_DB=postgres
-      - POSTGRES_PASSWORD=%{database_password}
+      - POSTGRES_PASSWORD=%{dbpass}
       - POSTGRES_USER=odoo
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:

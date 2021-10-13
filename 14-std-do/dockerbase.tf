@@ -47,7 +47,7 @@ resource "digitalocean_droplet" "www-odoo" {
 
   provisioner "file" {
     content      = templatefile("docker-compose.yml.tpl", {
-      database_password = var.database_password != "" ? var.database_password : random_password.database_password.result
+      dbpass = var.database_password != "" ? var.database_password : random_password.database_password.result
     })
     destination = "/root/odoo/docker-compose.yml"
   }
