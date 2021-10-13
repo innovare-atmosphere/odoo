@@ -1,5 +1,5 @@
 server {
-    server_name %{ server_name };
+    server_name ${ server_name };
     client_max_body_size 20M;
     location / {
 	proxy_set_header        Host               $host;
