@@ -1,6 +1,5 @@
 name: odoo-14
 description: Deploy standard Odoo 14 version on your own Digital Ocean account.
-flavor: standard
 categories:
 - Finance
 - Supply Chain

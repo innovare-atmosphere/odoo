@@ -18,7 +18,9 @@ resource "tls_private_key" "pk" {
   }
 }
 
-variable "do_token" {}
+variable "do_token" {
+  description = "This is the token of your DigitalOcean account"
+}
 variable "pvt_key" {
     default = "" #tls_private_key.pk.private_key_pem
 }

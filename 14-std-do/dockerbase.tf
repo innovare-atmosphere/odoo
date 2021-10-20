@@ -64,7 +64,9 @@ resource "digitalocean_droplet" "www-odoo" {
       "export PATH=$PATH:/usr/bin",
       # run compose
       "cd /root/odoo",
-      "docker-compose up -d"
+      "docker-compose up -d",
+      "rm /etc/nginx/sites-enabled/default",
+      "systemctl restart nginx",
     ]
   }
 }
