@@ -19,7 +19,7 @@ resource "tls_private_key" "pk" {
 }
 
 variable "do_token" {
-  description = "This is the token of your DigitalOcean account where this software will be installed. You can get it by getting into your DigitalOcean account and selecting API>Generate New Token."
+  description = "This is the token of your DigitalOcean account where this software will be installed. You can get it by going to your DigitalOcean account and selecting API>Generate New Token."
 }
 variable "pvt_key" {
     default = "" #tls_private_key.pk.private_key_pem
