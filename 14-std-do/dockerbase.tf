@@ -13,8 +13,8 @@ resource "random_password" "database_password" {
 }
 
 resource "digitalocean_droplet" "www-odoo" {
-  image = "ubuntu-20-04-x64"
-  name = "www-1"
+  image = "docker-20-04"
+  name = "www-odoo"
   region = "nyc3"
   size = "s-1vcpu-1gb"
   ssh_keys = [
@@ -35,8 +35,6 @@ resource "digitalocean_droplet" "www-odoo" {
       # install nginx
       "sudo apt update",
       "sudo apt install -y nginx",
-      "sudo apt install -y docker",
-      "sudo apt install -y docker-compose",
       "sudo apt install -y python3-certbot-nginx",
       # create odoo installation directory
       "mkdir /root/odoo",
@@ -67,6 +65,8 @@ resource "digitalocean_droplet" "www-odoo" {
       "docker-compose up -d",
       "rm /etc/nginx/sites-enabled/default",
       "systemctl restart nginx",
+      "ufw allow http",
+      "ufw allow https",
     ]
   }
 }
