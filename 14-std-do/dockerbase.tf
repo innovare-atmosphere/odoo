@@ -17,7 +17,7 @@ resource "random_password" "database_password" {
 }
 
 resource "digitalocean_droplet" "www-odoo" {
-  image = "ubuntu-20-04-x64"
+  image = "docker-20-04"
   name = "www-1"
   region = "nyc3"
   size = "s-1vcpu-1gb"
@@ -33,18 +33,12 @@ resource "digitalocean_droplet" "www-odoo" {
     timeout = "2m"
   }
 
-  provisioner "local-exec" { # Write the resource ip_address locally
-    command = "echo '${self.ipv4_address}' > ./ipaddress"
-  }
-
   provisioner "remote-exec" {
     inline = [
       "export PATH=$PATH:/usr/bin",
       # install nginx
       "sudo apt update",
       "sudo apt install -y nginx",
-      "sudo apt install -y docker",
-      "sudo apt install -y docker-compose",
       "sudo apt install -y python3-certbot-nginx",
       # create odoo installation directory
       "mkdir /root/odoo",
