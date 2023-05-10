@@ -1,0 +1,9 @@
+name: odoo-14
+description: Deploy standard Odoo 14 version on your own Digital Ocean account.
+categories:
+- Finance
+- Supply Chain
+- Open Source
+- Administration
+- IT
+- Marketing
